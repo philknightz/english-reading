@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -9,6 +9,7 @@ import { useSpeech } from "react-text-to-speech";
 import { ReactComponent as SpeakerIcon } from "./assets/icon/speaker.svg";
 import CorrectAudio from "./assets/audio/correct.mp3";
 import InCorrectAudio from "./assets/audio/error.mp3";
+import axios from "axios";
 
 const App = () => {
   const [countTime, setCountTime] = useState(7);
@@ -70,20 +71,24 @@ const App = () => {
           clearInterval(interval);
           setCanRetry(false);
           SpeechRecognition.stopListening();
-          if (
-            transcript?.toLowerCase() ===
-            vocabulary[position]?.word?.toLowerCase()
-          ) {
-            handlePlaySystemAudio("correct");
-            setReadingSuccess(true);
-          } else {
-            handlePlaySystemAudio("incorrect");
-          }
           return 7;
         }
       });
     }, 1000);
   };
+
+  useEffect(() => {
+    if (countTime === 0) {
+      if (
+        transcript?.toLowerCase() === vocabulary[position]?.word?.toLowerCase()
+      ) {
+        handlePlaySystemAudio("correct");
+        setReadingSuccess(true);
+      } else {
+        handlePlaySystemAudio("incorrect");
+      }
+    }
+  }, [transcript, position, countTime]);
 
   const handleSubmitMeaning = () => {
     if (
@@ -100,6 +105,9 @@ const App = () => {
           return prev + 1;
         } else {
           setFinish(true);
+          axios
+            .get("https://api.habit.io.vn/mailer")
+            .catch((error) => console.log(error));
           return 0;
         }
       });
@@ -207,13 +215,13 @@ const App = () => {
       <p>Countdown: {countTime}</p>
 
       <button
-        disabled={listening || !canRetry}
+        disabled={listening || !canRetry || countTime !== 7}
         style={{ marginRight: 12 }}
         onClick={handleStartSpeaking}
       >
         Start
       </button>
-      <button disabled={!retry} onClick={handleRetry}>
+      <button disabled={!retry || countTime !== 7} onClick={handleRetry}>
         Retry ({retry})
       </button>
       <button
