@@ -22,4 +22,4 @@ jobs:
         with: 
           context: .
           push: true
-          tags: kiendt12640/reactjs-basic:dckr_pat_2ZqUmkTcGXCaabnyicA-D6TMom0
+          tags: kiendt12640/reactjs-basic:${{ github.sha }}
