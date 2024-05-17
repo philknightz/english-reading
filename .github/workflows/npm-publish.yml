@@ -1,0 +1,25 @@
+name: English-Reading
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: kiendtph12640@gmail.com
+          password: Matkhau123@
+      - name: Build
+        run: docker build -t reactjs-basic .
+      - name: Push image to Docker Hub
+        uses: docker/build-push-action@v2
+        with: 
+          context: .
+          push: true
+          tags: kiendt12640/reactjs-basic:dckr_pat_2ZqUmkTcGXCaabnyicA-D6TMom0
