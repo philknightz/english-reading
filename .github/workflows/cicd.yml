@@ -42,7 +42,7 @@ jobs:
           
       - name: Deploy to server
         run: |
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} -o StrictHostKeyChecking=no root@172.208.9.27 << 'EOF'
+          ssh -i private_key -o StrictHostKeyChecking=no root@172.208.9.27 << 'EOF'
             docker pull ${{ secrets.DOCKER_USERNAME }}/reactjs-basic:${{ github.sha }}
             docker stop reactjs-container || true
             docker rm reactjs-container || true
