@@ -38,7 +38,7 @@ jobs:
         with:
           host: 172.208.9.27
           username: root
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_COMING }}
           script: |
             docker pull kiendt12640/reactjs-basic:${{ github.sha }}
             docker stop reactjs-container
