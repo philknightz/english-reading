@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo file
-        run: echo ${{ secrets.SSH_PRIVATE_KEY }}
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
 
       - name: Test
         uses: appleboy/ssh-action@v0.1.3
