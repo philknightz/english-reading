@@ -40,6 +40,7 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            ssh -vvv ${{ secrets.SSH_PRIVATE_KEY }} 'echo "SSH connection established"'
             docker pull kiendt12640/reactjs-basic:${{ github.sha }}
             docker stop reactjs-container
             docker rm reactjs-container 
