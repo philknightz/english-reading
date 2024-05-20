@@ -30,6 +30,53 @@ jobs:
     steps:
       - name: Echo file
         run: echo ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Test
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: 172.208.9.27
+          username: root
+          key: |
+                "-----BEGIN OPENSSH PRIVATE KEY-----
+                b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+                NhAAAAAwEAAQAAAYEAsGPyhNPN1SyIe5MZnwFmpQU78+VUSI826A2mH1TfyOiEW63jlyUD
+                K30Aro903VuY/6ZHDTCHUZtDIBxpnwWKNTnaugdd0Y4d5dJepacgsNDBK3WjyDc2grijMI
+                3Peq0xp5ytrXe8Y9yPi6mnBX0h4yHEZAxYQdNxTNSn/XEXJcZHVvpJ6r8Rf59ozi55a51N
+                jAE3fNSGHEGvoUKF93nCOPNTXdjmPp0Qfvzp5oqbC/ii9DZMhF3pkZ6C4UbOdngImZVGbh
+                /Tz8Mx3OfW0aA4HABm9q5X96r1ejq5QOuGnORzi/trt1twbEOA9KchO5lwq8nrs5wBt84V
+                1n4pnIZ4zHJSwc4sJhStUJGE4mN95KdX9IFxn+h26AvD3A/MilEL5ei+I1GAw8aQqLadGs
+                OOzP7yPbnarU4ejNWNCQdv+u+psFgMPdNsmAS8QkWYWmOx5R0LRksglI0H1+z1bMtR2CDL
+                iCm4uksdBPbIIoEqt2RfEpsjXqv3KctMBfHdB2/DAAAFkMD1TVDA9U1QAAAAB3NzaC1yc2
+                EAAAGBALBj8oTTzdUsiHuTGZ8BZqUFO/PlVEiPNugNph9U38johFut45clAyt9AK6PdN1b
+                mP+mRw0wh1GbQyAcaZ8FijU52roHXdGOHeXSXqWnILDQwSt1o8g3NoK4ozCNz3qtMaecra
+                13vGPcj4uppwV9IeMhxGQMWEHTcUzUp/1xFyXGR1b6Seq/EX+faM4ueWudTYwBN3zUhhxB
+                r6FChfd5wjjzU13Y5j6dEH786eaKmwv4ovQ2TIRd6ZGeguFGznZ4CJmVRm4f08/DMdzn1t
+                GgOBwAZvauV/eq9Xo6uUDrhpzkc4v7a7dbcGxDgPSnITuZcKvJ67OcAbfOFdZ+KZyGeMxy
+                UsHOLCYUrVCRhOJjfeSnV/SBcZ/odugLw9wPzIpRC+XoviNRgMPGkKi2nRrDjsz+8j252q
+                1OHozVjQkHb/rvqbBYDD3TbJgEvEJFmFpjseUdC0ZLIJSNB9fs9WzLUdggy4gpuLpLHQT2
+                yCKBKrdkXxKbI16r9ynLTAXx3QdvwwAAAAMBAAEAAAGAOWPbhUIQh1pc8a/ztxtSlUB1uC
+                4WVSFboPbH5QvNX+XfIqEaGpQtStn5/dGpGVhzGEK2fWEbtf6JQYpdByNbS2QOeVZqPQM7
+                UQo4RzdwWHcjUouNBViJgNCoL+UD64ssS7ebfoQlpGwfvDYvpIaJHwheiJrHoGs2QuQx4D
+                EKcfzoOzFmGV2fSOHJzMOsN8pPb8z5i8Dt/YWVqiclxVY1TihFKJSonRinRFnvlFXmimeU
+                RVbhYHPZycpEFR3fkQYOY0BgjCwnwZgn1nCoEwh6tFrfKrfo2VOHVSOkJZ5nwUpA35n3+b
+                8IBoYLpGOe5qZq1hUfraGlrj6D4OZklcg8kNEsawwtBI5Y6q0+JVxeVNR9A8/q3lZJIKP3
+                jCDBT+PNgG83nHq1bXjs3PsPfcAE5Z3X5F2VRVct/FAKbiLqcpS4OFor1yHMb+EEQRkk7k
+                YGPXMM8wu4qdpNK+sl9cqYSOoul3VaOPtNzmTj3n2poruMnUo1JncG5pLhU+bHCbaBAAAA
+                wHU9kEzYH1vKSaUDwvsF9iKhmQOgDd7e6eIj3V2LsUj9GYdr6nHd68uwkEidk0xq551nzf
+                pPfNZ994y1bJjhtw4UwvgtvR0x1BmXEscHiGt5Xh1kUUAk41wz9l2NFUDM8B8YPxDR3J+P
+                ESiw/skcqnifJ6iH6TmK6v83sxIsRiObZW3q7MFNHR6t30/Eu0aBB6TX9YZmfb6hehP5+f
+                rLFD8OS9zclJUAoY+7sOBATgJGuKiqt4VpQwqieHh90dofigAAAMEAv8qJ8An+zfPs9I1O
+                txwfr7u8sE9feXqFh1e9N3ak4KbpBslA2dIPtmRAGxXfuKhAc/Poh9ameAGWv6wb+mex3a
+                7+EQ3MgNRnNKSYhA9AxMj2yhuA3GRtOwJfRhazqoV++84yJKbl69UQxHY4+T623cwug4gu
+                +WYGavJgjUEDX+L+8x/VcZLUI5MCY51ULlqf1nxMx0pit7/vAJdaR50gk8eLQ86kDqqy3q
+                9Emi013ZWMZAQwnW0WFVQrzP+ai5nBAAAAwQDrcXzLidIzYfmcrNA219O9WTyhdUtwMqmX
+                uhC1NIOdBnHHLov4yi0H3vaToWBQrpYU2f07JX7JqMQCcYI4OyeXQXkdCWqMzYdTCtHmgT
+                2BnDSSiZbu5BQoa1iaVurWDpklQn1Z8Vsy0rmCNoRF1JQO0A8DZlg3Gctfj5q4AQ260Jqv
+                vo6LcwNbx2LNXTe0eFWSeOdvTaFguLLovS6BXc59MMkNt840S2Ratl9Rg9ibv2QusZ6xrx
+                fa8rcEor70QoMAAAAXcGhpbGtuaWdodHpAcGhpbGtuaWdodHoBAgME
+                -----END OPENSSH PRIVATE KEY-----"
+          script: ls -la
+      
       - name: Deploy to server
         uses: appleboy/ssh-action@v0.1.3
         with:
