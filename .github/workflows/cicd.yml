@@ -48,5 +48,5 @@ jobs:
             docker pull kiendt12640/reactjs-basic:${{ github.sha }}
             docker stop reactjs-container || true
             docker rm reactjs-container || true
-            docker run -d -p 3010:3000 --name reactjs-container kiendt12640/reactjs-basic:${{ github.sha }}
+            docker run -d -p 3030:3000 --name reactjs-container kiendt12640/reactjs-basic:${{ github.sha }}
           EOF
