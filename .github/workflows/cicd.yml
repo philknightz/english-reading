@@ -1,6 +1,8 @@
 name: English-Reading
 
 on:
+  push:
+    branch: master
   release:
     types: [created]
 
